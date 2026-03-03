@@ -1,6 +1,10 @@
-def main():
-    print("Hello from audio-speed-editor-desktop!")
-
+import sys
+from PySide6.QtWidgets import QApplication
+from ui.mainWindow import MainWindow
 
 if __name__ == "__main__":
-    main()
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.resize(400, 200)
+    window.show()
+    sys.exit(app.exec())
