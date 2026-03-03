@@ -11,7 +11,7 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
 
-# from services.audio_processor import process_audio
+from services.audioProcess import process_audio
 
 
 class MainWindow(QWidget):
@@ -22,7 +22,7 @@ class MainWindow(QWidget):
 
         self.main_layout = QVBoxLayout()
         self.speed_layout = QGridLayout()
-        self.speed_layout.setAlignment(Qt.AlignHCenter)
+        self.speed_layout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 
         self.label = QLabel("Nenhum arquivo selecionado")
 
@@ -65,9 +65,9 @@ class MainWindow(QWidget):
             return
 
         try:
-            speed = float(self.speed_input.text())
-            # output = process_audio(self.file_path, speed)
-            # QMessageBox.information(self, "Sucesso", f"Arquivo salvo como:\n{output}")
+            speed = float(self.speed_input.value())
+            output = process_audio(self.file_path, speed)
+            QMessageBox.information(self, "Sucesso", f"Arquivo salvo como:\n{output}")
         except ValueError as e:
             QMessageBox.critical(self, "Erro", str(e))
         except Exception:
