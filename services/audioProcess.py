@@ -12,6 +12,7 @@ def process_audio(input_file: str, speed: float) -> str:
         "-i", input_file,
         "-filter:a", f"atempo={speed}",
         output_file,
+        "-y"
     ]
 
     subprocess.run(command, check=True)
