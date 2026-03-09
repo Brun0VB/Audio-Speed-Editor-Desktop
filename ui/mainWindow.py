@@ -10,6 +10,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
+from utils.paths import resource_path
 
 from services.audioProcess import process_audio
 
@@ -18,7 +19,8 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Audio Speed Editor")
-        self.setWindowIcon(QIcon("assets/main_icon.png"))
+        icon_path = resource_path("assets/main_icon.png")
+        self.setWindowIcon(QIcon(icon_path))
 
         self.main_layout = QVBoxLayout()
         self.speed_layout = QGridLayout()
